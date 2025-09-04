@@ -1,0 +1,33 @@
+
+// CONSTRUCCION DEL WIDGET PARA CUIANDO LA LISTA DE FAVORITOS ESTA VACIA 
+
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+class EmptyFavoritesComponent extends StatelessWidget {
+  final ColorScheme colors;
+  const EmptyFavoritesComponent({super.key, required this.colors});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Icon(Icons.favorite_border_sharp, size: 60, color: colors.primary),
+          Text('Ohhh no!',
+              style: TextStyle(fontSize: 30, color: colors.primary)),
+          const Text('No tienes razas favoritas',
+              style: TextStyle(fontSize: 20)),
+          const SizedBox(height: 20),
+          FilledButton.tonal(
+            onPressed: () => context.go('/home'),
+            child: const Text('Empieza a buscar'),
+          )
+        ],
+      ),
+    );
+  }
+}

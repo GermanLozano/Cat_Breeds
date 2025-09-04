@@ -1,0 +1,23 @@
+
+// IMPLEMENTACION DE LA CLASE "Debouncer" PARA CONTROLAR LA FRECUENCIA EN LA QUE SE EJECUTA UNA ACCION
+// UTIL PARA PETICIONES EN CAMPOS DE BUSQUEDA
+
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+
+class Debouncer {
+  final int milliseconds;
+  Timer? _timer;
+
+  Debouncer({required this.milliseconds});
+
+  void run(VoidCallback action) {
+    _timer?.cancel();
+    _timer = Timer(Duration(milliseconds: milliseconds), action);
+  }
+
+  void dispose() {
+    _timer?.cancel();
+  }
+}
